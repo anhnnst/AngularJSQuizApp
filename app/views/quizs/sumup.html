@@ -1,0 +1,18 @@
+<div >
+    <div class="row">
+        <div class="card col-10">
+            <div class="card-header">
+                Result of Quiz
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text" ng-repeat="item in question().Answers">
+                    <h2>Total of Questions: {{questions.length}}</h2>
+                    <h2>Quiz Marks: {{quizMarks}}</h2>
+                    <h2>Submit Time at: {{time}}</h2>
+                </p>
+                <a ng-href="#!/listSubjects" class="nav-link">Take Another Quiz</a>
+            </div>
+        </div>
+    </div>
+</div>

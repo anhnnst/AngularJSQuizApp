@@ -1,0 +1,29 @@
+<div ng-controller="SubjectCtrl">
+    <div class="row alert alert-success">
+        <h4 >List of Subjects</h4>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>No.</td>
+                <td>Image</td>
+                <td>Name</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr ng-repeat="x in subjects.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) track by $index ">
+                <td>{{ x.Id }} - {{$index}}</td>
+                <td>
+                    <img alt="{{x.Name}}" class="img-fluid" ng-src="images/logos/{{x.Logo}}" width="50">
+                </td>
+                <td>{{ x.Name }}</td>
+                <td>
+                    <a ng-href="#!/takeQuiz/{{x.Id}}">Take Quiz</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+
+        <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div ng-controller="StudentCtrl">
+    <div class="row"><br /></div>
+    <div class="row">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" ng-model="search.$" class="form-control" placeholder="Search" />
+            </div>
+            <div class="col">
+                <input type="text" ng-model="search.Fullname" class="form-control" placeholder="Search by Fullname" />
+            </div>
+            <div class="col">
+                <input
+                        type="text"
+                        ng-model="search.Email"
+                        class="form-control"
+                        placeholder="Search by Email"
+                />
+            </div>
+            <div class="col">
+                <input type="button" value="Clear Filter" ng-click="search =undefined" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height: 0.5em;"></div>
+    <div class="row">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>No.</td>
+                <td>Username</td>
+                <td>Fullname</td>
+                <td>Email</td>
+                <td>Gender</td>
+                <td>Birthday</td>
+                <td>School Fee</td>
+                <td>Marks</td>
+            </tr>
+            <tr ng-repeat="x in students | filter: search track by $index ">
+                <td>{{ $index }}</td>
+                <td>{{ x.username }}</td>
+                <td>{{ x.fullname }}</td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.gender }}</td>
+                <td>{{ x.birthday | date: 'yyyy-MM-dd' }}</td>
+                <td>{{x.schoolfee}}</td>
+                <td>{{x.marks}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
