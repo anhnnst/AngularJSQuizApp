@@ -11,9 +11,10 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{question().Text}}</h5>
+                <hr>
                 <p class="card-text" ng-repeat="item in question().Answers">
                     <label>
-                        <input type="radio" ng-model="answer" ng-value="item.Id" name="answer"> {{item.Text}}
+                        <input type="radio" ng-model="answer.choice" value="{{item.Id}}" name="answer"> {{item.Text}}
                     </label>
                 </p>
                 <hr>
@@ -23,6 +24,7 @@
                 <div ng-click="submitQuiz()" class="btn btn-primary">Submit</div>
             </div>
         </div>
+        Choose: {{answer| json}}
     </div>
     <div ng-if="sumup === true" ng-include="'views/quizs/sumup.html'">
 

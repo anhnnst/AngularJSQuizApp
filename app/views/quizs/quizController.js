@@ -14,7 +14,7 @@ angular.module('myApp.quiz', ['ngRoute','ui.bootstrap'])
         $scope.questions=[];
         $scope.time = 60;
         $scope.quizMarks = 0;
-        $scope.answer = '';
+        $scope.answer = {};
 
         var stop = $interval(()=>{$scope.time --}, 1000);
         quizFactory.getQuestions($routeParams.subjectCode).then((data)=>{
@@ -25,8 +25,10 @@ angular.module('myApp.quiz', ['ngRoute','ui.bootstrap'])
             return $scope.questions[$scope.currentQuestion];
         };
         $scope.setQuestionIndex = (newIndex)=>{
-            if ($scope.answer === $scope.question().AnswerId){
+            console.log('set question index: '+$scope.answer.choice + " ---- "+ $scope.question().AnswerId)
+            if ($scope.answer.choice == $scope.question().AnswerId){
                 $scope.quizMarks += $scope.question().Marks;
+                console.log("count marks");
             }
 
             $scope.currentQuestion = newIndex;
@@ -38,6 +40,12 @@ angular.module('myApp.quiz', ['ngRoute','ui.bootstrap'])
         }
         $scope.sumup = false;
         $scope.submitQuiz = ()=>{
+            console.log($scope.answer + " --quiz-- "+ $scope.question().AnswerId)
+            if ($scope.answer === $scope.question().AnswerId){
+                $scope.quizMarks += $scope.question().Marks;
+                console.log("count marks");
+            }
+
             $scope.sumup = true;
             $interval.cancel(stop);
         }
